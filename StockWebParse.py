@@ -3,7 +3,7 @@ from requests import get
 from datetime import date, datetime
 
 
-def getData(stock, _date):
+def get_data(stock, _date):
     date_string = ""
     try:
         date_string = "&date=%d" % (
@@ -50,4 +50,4 @@ def getData(stock, _date):
 if __name__ == "__main__":
     stock = input("Enter name of stock...").upper()
     _date = input('Enter date in the format "%dd%mm%YYYY" if necessary or skip...')
-    getData(stock, _date)
+    get_data(stock, _date)
