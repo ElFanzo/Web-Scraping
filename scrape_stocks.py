@@ -3,14 +3,15 @@ from requests import get
 from datetime import date, datetime
 
 
+# Get stock's calls by the date from Yahoo
 def get_data(stock, _date):
     date_string = ""
     try:
-        date_string = "&date=%d" % (
-            (
-                datetime.strptime(_date, "%d%m%Y").date() - date(2018, 8, 3)
+        date_string = (
+            "&date=%d"
+            % (
+                datetime.strptime(_date, "%d%m%Y").date() - date(1970, 1, 1)
             ).total_seconds()
-            + 1533254400
         )
         _date = "_" + str(_date)
     except ValueError:
@@ -28,7 +29,7 @@ def get_data(stock, _date):
         tbody = section.find("tbody")
         trows = tbody.find_all("tr")
     except AttributeError:
-        print("%s stock is invalid or data for this date have not found" % stock)
+        print("%s stock is invalid or data for this date have not been found" % stock)
         return
 
     file = open("stock_%s%s.csv" % (stock, _date), "w")
@@ -41,8 +42,8 @@ def get_data(stock, _date):
         file.write(res + "\n")
 
     print(
-        "%s\nDone! Your file is ready. It is called %s\nThe data were taken from link below:\n%s"
-        % ("_" * 62, file.name, req.url)
+        "%s\nDone! Your file is ready. It is called %s\nThe data were taken "
+        "from link below:\n%s" % ("_" * 62, file.name, req.url)
     )
     file.close()
 

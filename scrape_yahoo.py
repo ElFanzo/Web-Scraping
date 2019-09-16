@@ -101,8 +101,8 @@ def get_options_info(stock):
     for i, j in zip([1, 2], ["Calls", "Puts"]):
         file.write("%s\n" % j)
         rows = g.doc.select(
-            '//*[@id="Col1-1-OptionContracts-Proxy"]/section/section[%d]/div[2]/div/table/tbody/tr'
-            % i
+            '//*[@id="Col1-1-OptionContracts-Proxy"]/section/section[%d]'
+            "/div[2]/div/table/tbody/tr" % i
         )
         for row in rows:
             tds = [td.text() for td in row.select("td")]
@@ -117,7 +117,8 @@ if __name__ == "__main__":
     parse()
 
     print(
-        '%s\nDone! All the output data is in the folder "Yahoo Finance Parsed Data".\nCommon info is in the file '
-        "called stocks_info.csv \nOptions for each stock are in the folder Options.\nIf the options do not exist for "
-        "any stock, then perhaps\n   this info does not exist on the site." % ("_" * 63)
+        '%s\nDone! All the output data is in the folder "Yahoo Finance Parsed Data".'
+        "\nCommon info is in the file called stocks_info.csv \nOptions for each "
+        "stock are in the folder Options.\nIf the options do not exist for any "
+        "stock, then perhaps\n   this info does not exist on the site." % ("_" * 63)
     )
