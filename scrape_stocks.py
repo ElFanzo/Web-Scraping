@@ -29,7 +29,8 @@ def get_data(stock, _date):
         tbody = section.find("tbody")
         trows = tbody.find_all("tr")
     except AttributeError:
-        print("%s stock is invalid or data for this date have not been found" % stock)
+        print("%s stock is invalid or data for this date have not been found"
+              % stock)
         return
 
     file = open("stock_%s%s.csv" % (stock, _date), "w")
@@ -50,5 +51,5 @@ def get_data(stock, _date):
 
 if __name__ == "__main__":
     stock = input("Enter name of stock...").upper()
-    _date = input('Enter date in the format "%dd%mm%YYYY" if necessary or skip...')
+    _date = input('Enter date in the format "%dd%mm%YYYY" if necessary ...')
     get_data(stock, _date)
