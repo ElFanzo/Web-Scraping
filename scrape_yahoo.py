@@ -1,6 +1,6 @@
-from grab import Grab
 import os
 import re
+from grab import Grab
 
 
 def parse():
@@ -32,11 +32,10 @@ def parse():
 
 
 def get_stock_info(stock, file):
-    """
-    Get stocks data
-    :param stock: A stock's name
-    :param file: An output filename
-    :return:
+    """Get stocks data.
+
+    :param stock: a stock's name
+    :param file: an output filename
     """
     g = Grab(transport="urllib3")
     g.go("https://finance.yahoo.com/quote/%s" % stock)
@@ -84,10 +83,9 @@ def get_stock_info(stock, file):
 
 
 def get_options_info(stock):
-    """
-    Get stock options data
+    """Get stock options data.
+
     :param stock: A stock's name
-    :return:
     """
     g = Grab(transport="urllib3")
     g.go("https://finance.yahoo.com/quote/{0}/options?p={0}".format(stock))
