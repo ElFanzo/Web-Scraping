@@ -27,7 +27,9 @@ def get_data(stock, _date):
     )
 
     soup = BeautifulSoup(req.content, "html5lib")
-    section = soup.find("section", attrs={"class": "Mt(20px) qsp-2col-options"})
+    section = soup.find(
+        "section", attrs={"class": "Mt(20px) qsp-2col-options"}
+    )
 
     try:
         tbody = section.find("tbody")

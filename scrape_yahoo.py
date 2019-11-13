@@ -53,7 +53,9 @@ def get_stock_info(stock, file):
         '//*[@id="quote-header-info"]/div[2]/div[1]/div[2]/span'
     ).text()[-3:]
     mark_time = g.doc.select('//*[@id="quote-market-notice"]/span').text()
-    mark_time = re.search(r"\d+:\d+\w\w \w{3}", mark_time, flags=re.ASCII).group(0)
+    mark_time = re.search(
+        r"\d+:\d+\w\w \w{3}", mark_time, flags=re.ASCII
+    ).group(0)
     pat = '//*[@id="quote-summary"]/div[1]/table/tbody/tr[%d]/td[2]'
     vol = g.doc.select(pat % 7).text().replace(",", ".")
     avg_vol = g.doc.select(pat % 8).text().replace(",", ".")
