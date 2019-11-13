@@ -3,8 +3,12 @@ from requests import get
 from bs4 import BeautifulSoup
 
 
-# Get stock's calls by the date from Yahoo
 def get_data(stock, _date):
+    """Get stock's calls by a date from Yahoo.
+
+    :param stock: a stock's name
+    :param _date: a date string
+    """
     date_string = ""
     try:
         date_string = (

@@ -4,6 +4,7 @@ from grab import Grab
 
 
 def parse():
+    """Parse stocks' data from Yahoo."""
     try:
         os.mkdir("Yahoo Finance Parsed Data")
     except FileExistsError:
