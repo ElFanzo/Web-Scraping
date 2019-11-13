@@ -1,6 +1,7 @@
 from datetime import date, datetime
-from requests import get
+
 from bs4 import BeautifulSoup
+from requests import get
 
 
 def get_data(stock, _date):
